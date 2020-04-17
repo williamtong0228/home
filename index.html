@@ -13,9 +13,10 @@
       margin: 0px;
     }
     body {
-      background-color: transparent;
       transform: perspective(1400px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
       transform-style: preserve-3d;
+      background-image: none;
+      background-color: rgb(0, 0, 0);
     }
     .gwd-p-d6f6 {
       height: auto;
@@ -34,6 +35,9 @@
       left: 50%;
       transform: translate3d(-348px, 0px, 0px);
       transform-style: preserve-3d;
+      background-image: none;
+      color: rgb(255, 255, 255);
+      background-color: rgb(0, 0, 0);
     }
     .gwd-span-j6f7 {
       font-size: 50px;
@@ -60,6 +64,25 @@
       font-size: 20px;
     }
   </style>
+  <script type="text/javascript" gwd-events="support" src="gwd-events-support.1.0.js"></script>
+  <script type="text/javascript" gwd-events="handlers">
+    gwd.auto_BodyClick = function(event) {
+      // GWD Predefined Function
+      gwd.actions.events.setInlineStyle('document.body', 'background-color: black;');
+    };
+  </script>
+  <script type="text/javascript" gwd-events="registration">
+    // Support code for event handling in Google Web Designer
+    // This script block is auto-generated. Please do not edit!
+    gwd.actions.events.registerEventHandlers = function(event) {
+      gwd.actions.events.addHandler('document.body', 'click', gwd.auto_BodyClick, false);
+    };
+    gwd.actions.events.deregisterEventHandlers = function(event) {
+      gwd.actions.events.removeHandler('document.body', 'click', gwd.auto_BodyClick, false);
+    };
+    document.addEventListener("DOMContentLoaded", gwd.actions.events.registerEventHandlers);
+    document.addEventListener("unload", gwd.actions.events.deregisterEventHandlers);
+  </script>
 </head>
 
 <body class="htmlNoPages">
@@ -73,8 +96,7 @@
     <span class="gwd-span-tlz5">Oriental FortuneTeller:</span><br>
     
     <a href="https://apps.apple.com/app/oriental-fortuneteller/id1449859137">https://apps.apple.com/app/oriental-fortuneteller/id1449859137</a><span class="gwd-span-17rm"><br>Privacy Policies for Oriental Fortune Teller:</span><br>
-     We don't store any user information or user activity data. Device Information and user activities data will be collected directly by Apple, Google and Google's partners. Oriental Fortune Teller will only see the knowledge Apple and Google share to
-    us to help us improve the app or future apps.&nbsp;<br>
+     We don't store any user information or user activity data. Device Information and user activities data will be collected directly by Apple, Google and Google's partners. Oriental Fortune Teller will only see the knowledge Apple and Google share to us to help us improve the app or future apps.&nbsp;<br>
     <br>
     <br>
     
@@ -98,8 +120,7 @@
     <br>
     
     <span class="gwd-span-az7o">Privacy Policies  for Psychic Swords Dance:</span><br>
-     We don't store any user information or user activity data. Device Information and user activities data will be collected directly by Apple, Google and Google's partners. Psychic Swords Dance will only see the knowledge Apple and Google share to us
-    to help us improve the app or future apps.<br>
+     We don't store any user information or user activity data. Device Information and user activities data will be collected directly by Apple, Google and Google's partners. Psychic Swords Dance will only see the knowledge Apple and Google share to us to help us improve the app or future apps.<br>
     <br>
     <br>
     
