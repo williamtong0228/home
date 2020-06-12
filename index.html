@@ -1220,55 +1220,55 @@ var Application = function() {
 		target.removeEventListener("animationend", self.animationEndShowHandler);
 	}
 
-	self.setViewOptions = function(view) {
+	// self.setViewOptions = function(view) {
 
-		if (view) {
-			self.minimumScale = self.getViewPreferenceValue(view, self.prefix + "minimum-scale");
-			self.maximumScale = self.getViewPreferenceValue(view, self.prefix + "maximum-scale");
-			self.scaleViewsToFit = self.getViewPreferenceBoolean(view, self.prefix + "scale-to-fit");
-			self.scaleToFitType = self.getViewPreferenceValue(view, self.prefix + "scale-to-fit-type");
-			self.scaleToFitOnDoubleClick = self.getViewPreferenceBoolean(view, self.prefix + "scale-on-double-click");
-			self.actualSizeOnDoubleClick = self.getViewPreferenceBoolean(view, self.prefix + "actual-size-on-double-click");
-			self.scaleViewsOnResize = self.getViewPreferenceBoolean(view, self.prefix + "scale-on-resize");
-			self.enableScaleUp = self.getViewPreferenceBoolean(view, self.prefix + "enable-scale-up");
-			self.centerHorizontally = self.getViewPreferenceBoolean(view, self.prefix + "center-horizontally");
-			self.centerVertically = self.getViewPreferenceBoolean(view, self.prefix + "center-vertically");
-			self.navigationOnKeypress = self.getViewPreferenceBoolean(view, self.prefix + "navigate-on-keypress");
-			self.showViewName = self.getViewPreferenceBoolean(view, self.prefix + "show-view-name");
-			self.refreshPageForChanges = self.getViewPreferenceBoolean(view, self.prefix + "refresh-for-changes");
-			self.refreshPageForChangesInterval = self.getViewPreferenceValue(view, self.prefix + "refresh-interval");
-			self.showNavigationControls = self.getViewPreferenceBoolean(view, self.prefix + "show-navigation-controls");
-			self.scaleViewSlider = self.getViewPreferenceBoolean(view, self.prefix + "show-scale-controls");
-			self.enableDeepLinking = self.getViewPreferenceBoolean(view, self.prefix + "enable-deep-linking");
-			self.singlePageApplication = self.getViewPreferenceBoolean(view, self.prefix + "application");
-			self.showByMediaQuery = self.getViewPreferenceBoolean(view, self.prefix + "show-by-media-query");
-			self.showUpdateNotification = document.cookie!="" ? document.cookie.indexOf(self.pageRefreshedName)!=-1 : false;
-			self.imageComparisonDuration = self.getViewPreferenceValue(view, self.prefix + "image-comparison-duration");
-			self.supportAnimations = self.getViewPreferenceBoolean(view, self.prefix + "enable-animations", true);
+	// 	if (view) {
+	// 		self.minimumScale = self.getViewPreferenceValue(view, self.prefix + "minimum-scale");
+	// 		self.maximumScale = self.getViewPreferenceValue(view, self.prefix + "maximum-scale");
+	// 		self.scaleViewsToFit = self.getViewPreferenceBoolean(view, self.prefix + "scale-to-fit");
+	// 		self.scaleToFitType = self.getViewPreferenceValue(view, self.prefix + "scale-to-fit-type");
+	// 		self.scaleToFitOnDoubleClick = self.getViewPreferenceBoolean(view, self.prefix + "scale-on-double-click");
+	// 		self.actualSizeOnDoubleClick = self.getViewPreferenceBoolean(view, self.prefix + "actual-size-on-double-click");
+	// 		self.scaleViewsOnResize = self.getViewPreferenceBoolean(view, self.prefix + "scale-on-resize");
+	// 		self.enableScaleUp = self.getViewPreferenceBoolean(view, self.prefix + "enable-scale-up");
+	// 		self.centerHorizontally = self.getViewPreferenceBoolean(view, self.prefix + "center-horizontally");
+	// 		self.centerVertically = self.getViewPreferenceBoolean(view, self.prefix + "center-vertically");
+	// 		self.navigationOnKeypress = self.getViewPreferenceBoolean(view, self.prefix + "navigate-on-keypress");
+	// 		self.showViewName = self.getViewPreferenceBoolean(view, self.prefix + "show-view-name");
+	// 		self.refreshPageForChanges = self.getViewPreferenceBoolean(view, self.prefix + "refresh-for-changes");
+	// 		self.refreshPageForChangesInterval = self.getViewPreferenceValue(view, self.prefix + "refresh-interval");
+	// 		self.showNavigationControls = self.getViewPreferenceBoolean(view, self.prefix + "show-navigation-controls");
+	// 		self.scaleViewSlider = self.getViewPreferenceBoolean(view, self.prefix + "show-scale-controls");
+	// 		self.enableDeepLinking = self.getViewPreferenceBoolean(view, self.prefix + "enable-deep-linking");
+	// 		self.singlePageApplication = self.getViewPreferenceBoolean(view, self.prefix + "application");
+	// 		self.showByMediaQuery = self.getViewPreferenceBoolean(view, self.prefix + "show-by-media-query");
+	// 		self.showUpdateNotification = document.cookie!="" ? document.cookie.indexOf(self.pageRefreshedName)!=-1 : false;
+	// 		self.imageComparisonDuration = self.getViewPreferenceValue(view, self.prefix + "image-comparison-duration");
+	// 		self.supportAnimations = self.getViewPreferenceBoolean(view, self.prefix + "enable-animations", true);
 
-			if (self.scaleViewsToFit) {
-				// var newScaleValue = self.scaleViewToFit(view);
+	// 		if (self.scaleViewsToFit) {
+	// 			// var newScaleValue = self.scaleViewToFit(view);
 				
-				// if (newScaleValue<0) {
-				// 	setTimeout(self.scaleViewToFit, 500, view);
-				// }
-			}
-			else {
-				self.viewScale = self.getViewScaleValue(view);
-				self.viewToFitWidthScale = self.getViewFitToViewportWidthScale(view, self.enableScaleUp)
-				self.viewToFitHeightScale = self.getViewFitToViewportScale(view, self.enableScaleUp);
-				self.updateSliderValue(self.viewScale);
-			}
+	// 			// if (newScaleValue<0) {
+	// 			// 	setTimeout(self.scaleViewToFit, 500, view);
+	// 			// }
+	// 		}
+	// 		else {
+	// 			self.viewScale = self.getViewScaleValue(view);
+	// 			self.viewToFitWidthScale = self.getViewFitToViewportWidthScale(view, self.enableScaleUp)
+	// 			self.viewToFitHeightScale = self.getViewFitToViewportScale(view, self.enableScaleUp);
+	// 			self.updateSliderValue(self.viewScale);
+	// 		}
 
-			if (self.imageComparisonDuration!=null) {
-				// todo
-			}
+	// 		if (self.imageComparisonDuration!=null) {
+	// 			// todo
+	// 		}
 
-			if (self.refreshPageForChangesInterval!=null) {
-				self.refreshDuration = Number(self.refreshPageForChangesInterval);
-			}
-		}
-	}
+	// 		if (self.refreshPageForChangesInterval!=null) {
+	// 			self.refreshDuration = Number(self.refreshPageForChangesInterval);
+	// 		}
+	// 	}
+	// }
 
 	self.previousView = function(event) {
 		var rules = self.getStylesheetRules();
@@ -1469,433 +1469,433 @@ var Application = function() {
 	 * @param {Number} desiredScale scale to define. not used if scale to fit is false
 	 * @param {Boolean} isSliderChange indicates if slider is callee
 	 */
-	self.setViewScaleValue = function(view, scaleToFit, desiredScale, isSliderChange) {
-		var enableScaleUp = self.enableScaleUp;
-		var scaleToFitType = self.scaleToFitType;
-		var minimumScale = self.minimumScale;
-		var maximumScale = self.maximumScale;
-		var hasMinimumScale = !isNaN(minimumScale) && minimumScale!="";
-		var hasMaximumScale = !isNaN(maximumScale) && maximumScale!="";
-		var scaleNeededToFit = self.getViewFitToViewportScale(view, enableScaleUp);
-		var scaleNeededToFitWidth = self.getViewFitToViewportWidthScale(view, enableScaleUp);
-		var scaleNeededToFitHeight = self.getViewFitToViewportHeightScale(view, enableScaleUp);
-		var scaleToFitFull = self.getViewFitToViewportScale(view, true);
-		var scaleToFitFullWidth = self.getViewFitToViewportWidthScale(view, true);
-		var scaleToFitFullHeight = self.getViewFitToViewportHeightScale(view, true);
-		var scaleToWidth = scaleToFitType=="width";
-		var scaleToHeight = scaleToFitType=="height";
-		var shrunkToFit = false;
-		var topPosition = null;
-		var leftPosition = null;
-		var translateY = null;
-		var translateX = null;
-		var transformValue = "";
-		var canCenterVertically = true;
-		var canCenterHorizontally = true;
+	// self.setViewScaleValue = function(view, scaleToFit, desiredScale, isSliderChange) {
+	// 	var enableScaleUp = self.enableScaleUp;
+	// 	var scaleToFitType = self.scaleToFitType;
+	// 	var minimumScale = self.minimumScale;
+	// 	var maximumScale = self.maximumScale;
+	// 	var hasMinimumScale = !isNaN(minimumScale) && minimumScale!="";
+	// 	var hasMaximumScale = !isNaN(maximumScale) && maximumScale!="";
+	// 	var scaleNeededToFit = self.getViewFitToViewportScale(view, enableScaleUp);
+	// 	var scaleNeededToFitWidth = self.getViewFitToViewportWidthScale(view, enableScaleUp);
+	// 	var scaleNeededToFitHeight = self.getViewFitToViewportHeightScale(view, enableScaleUp);
+	// 	var scaleToFitFull = self.getViewFitToViewportScale(view, true);
+	// 	var scaleToFitFullWidth = self.getViewFitToViewportWidthScale(view, true);
+	// 	var scaleToFitFullHeight = self.getViewFitToViewportHeightScale(view, true);
+	// 	var scaleToWidth = scaleToFitType=="width";
+	// 	var scaleToHeight = scaleToFitType=="height";
+	// 	var shrunkToFit = false;
+	// 	var topPosition = null;
+	// 	var leftPosition = null;
+	// 	var translateY = null;
+	// 	var translateX = null;
+	// 	var transformValue = "";
+	// 	var canCenterVertically = true;
+	// 	var canCenterHorizontally = true;
 
-		if (scaleToFit && isSliderChange!=true) {
-			if (scaleToFitType=="fit" || scaleToFitType=="") {
-				desiredScale = scaleNeededToFit;
-			}
-			else if (scaleToFitType=="width") {
-				desiredScale = scaleNeededToFitWidth;
-			}
-			else if (scaleToFitType=="height") {
-				desiredScale = scaleNeededToFitHeight;
-			}
-		}
-		else {
-			if (isNaN(desiredScale)) {
-				desiredScale = 1;
-			}
-		}
+	// 	if (scaleToFit && isSliderChange!=true) {
+	// 		if (scaleToFitType=="fit" || scaleToFitType=="") {
+	// 			desiredScale = scaleNeededToFit;
+	// 		}
+	// 		else if (scaleToFitType=="width") {
+	// 			desiredScale = scaleNeededToFitWidth;
+	// 		}
+	// 		else if (scaleToFitType=="height") {
+	// 			desiredScale = scaleNeededToFitHeight;
+	// 		}
+	// 	}
+	// 	else {
+	// 		if (isNaN(desiredScale)) {
+	// 			desiredScale = 1;
+	// 		}
+	// 	}
 
-		self.updateSliderValue(desiredScale);
+	// 	self.updateSliderValue(desiredScale);
 		
-		// scale to fit width
-		if (scaleToWidth && scaleToHeight==false) {
-			canCenterVertically = scaleNeededToFitHeight>=scaleNeededToFitWidth;
-			canCenterHorizontally = scaleNeededToFitWidth>=1 && enableScaleUp==false;
+	// 	// scale to fit width
+	// 	if (scaleToWidth && scaleToHeight==false) {
+	// 		canCenterVertically = scaleNeededToFitHeight>=scaleNeededToFitWidth;
+	// 		canCenterHorizontally = scaleNeededToFitWidth>=1 && enableScaleUp==false;
 
-			if (isSliderChange) {
-				canCenterHorizontally = desiredScale<scaleToFitFullWidth;
-			}
-			else if (scaleToFit) {
-				desiredScale = scaleNeededToFitWidth;
-			}
+	// 		if (isSliderChange) {
+	// 			canCenterHorizontally = desiredScale<scaleToFitFullWidth;
+	// 		}
+	// 		else if (scaleToFit) {
+	// 			desiredScale = scaleNeededToFitWidth;
+	// 		}
 
-			if (hasMinimumScale) {
-				desiredScale = Math.max(desiredScale, Number(minimumScale));
-			}
+	// 		if (hasMinimumScale) {
+	// 			desiredScale = Math.max(desiredScale, Number(minimumScale));
+	// 		}
 
-			if (hasMaximumScale) {
-				desiredScale = Math.min(desiredScale, Number(maximumScale));
-			}
+	// 		if (hasMaximumScale) {
+	// 			desiredScale = Math.min(desiredScale, Number(maximumScale));
+	// 		}
 
-			desiredScale = self.getShortNumber(desiredScale);
+	// 		desiredScale = self.getShortNumber(desiredScale);
 
-			canCenterHorizontally = self.canCenterHorizontally(view, "width", enableScaleUp, desiredScale, minimumScale, maximumScale);
-			canCenterVertically = self.canCenterVertically(view, "width", enableScaleUp, desiredScale, minimumScale, maximumScale);
+	// 		canCenterHorizontally = self.canCenterHorizontally(view, "width", enableScaleUp, desiredScale, minimumScale, maximumScale);
+	// 		canCenterVertically = self.canCenterVertically(view, "width", enableScaleUp, desiredScale, minimumScale, maximumScale);
 
-			if (desiredScale>1 && (enableScaleUp || isSliderChange)) {
-				transformValue = "scale(" + desiredScale + ")";
-			}
-			else if (desiredScale>=1 && enableScaleUp==false) {
-				transformValue = "scale(" + 1 + ")";
-			}
-			else {
-				transformValue = "scale(" + desiredScale + ")";
-			}
+	// 		if (desiredScale>1 && (enableScaleUp || isSliderChange)) {
+	// 			transformValue = "scale(" + desiredScale + ")";
+	// 		}
+	// 		else if (desiredScale>=1 && enableScaleUp==false) {
+	// 			transformValue = "scale(" + 1 + ")";
+	// 		}
+	// 		else {
+	// 			transformValue = "scale(" + desiredScale + ")";
+	// 		}
 
-			if (self.centerVertically) {
-				if (canCenterVertically) {
-					translateY = "-50%";
-					topPosition = "50%";
-				}
-				else {
-					translateY = "0";
-					topPosition = "0";
-				}
+	// 		if (self.centerVertically) {
+	// 			if (canCenterVertically) {
+	// 				translateY = "-50%";
+	// 				topPosition = "50%";
+	// 			}
+	// 			else {
+	// 				translateY = "0";
+	// 				topPosition = "0";
+	// 			}
 				
-				if (view.style.top != topPosition) {
-					view.style.top = topPosition + "";
-				}
+	// 			if (view.style.top != topPosition) {
+	// 				view.style.top = topPosition + "";
+	// 			}
 
-				if (canCenterVertically) {
-					transformValue += " translateY(" + translateY+ ")";
-				}
-			}
+	// 			if (canCenterVertically) {
+	// 				transformValue += " translateY(" + translateY+ ")";
+	// 			}
+	// 		}
 
-			if (self.centerHorizontally) {
-				if (canCenterHorizontally) {
-					translateX = "-50%";
-					leftPosition = "50%";
-				}
-				else {
-					translateX = "0";
-					leftPosition = "0";
-				}
+	// 		if (self.centerHorizontally) {
+	// 			if (canCenterHorizontally) {
+	// 				translateX = "-50%";
+	// 				leftPosition = "50%";
+	// 			}
+	// 			else {
+	// 				translateX = "0";
+	// 				leftPosition = "0";
+	// 			}
 
-				if (view.style.left != leftPosition) {
-					view.style.left = leftPosition + "";
-				}
+	// 			if (view.style.left != leftPosition) {
+	// 				view.style.left = leftPosition + "";
+	// 			}
 
-				if (canCenterHorizontally) {
-					transformValue += " translateX(" + translateX+ ")";
-				}
-			}
+	// 			if (canCenterHorizontally) {
+	// 				transformValue += " translateX(" + translateX+ ")";
+	// 			}
+	// 		}
 
-			view.style.transformOrigin = "0 0";
-			view.style.transform = transformValue;
+	// 		view.style.transformOrigin = "0 0";
+	// 		view.style.transform = transformValue;
 
-			self.viewScale = desiredScale;
-			self.viewToFitWidthScale = scaleNeededToFitWidth;
-			self.viewToFitHeightScale = scaleNeededToFitHeight;
-			self.viewLeft = leftPosition;
-			self.viewTop = topPosition;
+	// 		self.viewScale = desiredScale;
+	// 		self.viewToFitWidthScale = scaleNeededToFitWidth;
+	// 		self.viewToFitHeightScale = scaleNeededToFitHeight;
+	// 		self.viewLeft = leftPosition;
+	// 		self.viewTop = topPosition;
 
-			return desiredScale;
-		}
+	// 		return desiredScale;
+	// 	}
 
-		// scale to fit height
-		if (scaleToHeight && scaleToWidth==false) {
-			//canCenterVertically = scaleNeededToFitHeight>=scaleNeededToFitWidth;
-			//canCenterHorizontally = scaleNeededToFitHeight<=scaleNeededToFitWidth && enableScaleUp==false;
-			canCenterVertically = scaleNeededToFitHeight>=scaleNeededToFitWidth;
-			canCenterHorizontally = scaleNeededToFitWidth>=1 && enableScaleUp==false;
+	// 	// scale to fit height
+	// 	if (scaleToHeight && scaleToWidth==false) {
+	// 		//canCenterVertically = scaleNeededToFitHeight>=scaleNeededToFitWidth;
+	// 		//canCenterHorizontally = scaleNeededToFitHeight<=scaleNeededToFitWidth && enableScaleUp==false;
+	// 		canCenterVertically = scaleNeededToFitHeight>=scaleNeededToFitWidth;
+	// 		canCenterHorizontally = scaleNeededToFitWidth>=1 && enableScaleUp==false;
 			
-			if (isSliderChange) {
-				canCenterHorizontally = desiredScale<scaleToFitFullHeight;
-			}
-			else if (scaleToFit) {
-				desiredScale = scaleNeededToFitHeight;
-			}
+	// 		if (isSliderChange) {
+	// 			canCenterHorizontally = desiredScale<scaleToFitFullHeight;
+	// 		}
+	// 		else if (scaleToFit) {
+	// 			desiredScale = scaleNeededToFitHeight;
+	// 		}
 
-			if (hasMinimumScale) {
-				desiredScale = Math.max(desiredScale, Number(minimumScale));
-			}
+	// 		if (hasMinimumScale) {
+	// 			desiredScale = Math.max(desiredScale, Number(minimumScale));
+	// 		}
 
-			if (hasMaximumScale) {
-				desiredScale = Math.min(desiredScale, Number(maximumScale));
-				//canCenterVertically = desiredScale>=scaleNeededToFitHeight && enableScaleUp==false;
-			}
+	// 		if (hasMaximumScale) {
+	// 			desiredScale = Math.min(desiredScale, Number(maximumScale));
+	// 			//canCenterVertically = desiredScale>=scaleNeededToFitHeight && enableScaleUp==false;
+	// 		}
 
-			desiredScale = self.getShortNumber(desiredScale);
+	// 		desiredScale = self.getShortNumber(desiredScale);
 
-			canCenterHorizontally = self.canCenterHorizontally(view, "height", enableScaleUp, desiredScale, minimumScale, maximumScale);
-			canCenterVertically = self.canCenterVertically(view, "height", enableScaleUp, desiredScale, minimumScale, maximumScale);
+	// 		canCenterHorizontally = self.canCenterHorizontally(view, "height", enableScaleUp, desiredScale, minimumScale, maximumScale);
+	// 		canCenterVertically = self.canCenterVertically(view, "height", enableScaleUp, desiredScale, minimumScale, maximumScale);
 
-			if (desiredScale>1 && (enableScaleUp || isSliderChange)) {
-				transformValue = "scale(" + desiredScale + ")";
-			}
-			else if (desiredScale>=1 && enableScaleUp==false) {
-				transformValue = "scale(" + 1 + ")";
-			}
-			else {
-				transformValue = "scale(" + desiredScale + ")";
-			}
+	// 		if (desiredScale>1 && (enableScaleUp || isSliderChange)) {
+	// 			transformValue = "scale(" + desiredScale + ")";
+	// 		}
+	// 		else if (desiredScale>=1 && enableScaleUp==false) {
+	// 			transformValue = "scale(" + 1 + ")";
+	// 		}
+	// 		else {
+	// 			transformValue = "scale(" + desiredScale + ")";
+	// 		}
 
-			if (self.centerHorizontally) {
-				if (canCenterHorizontally) {
-					translateX = "-50%";
-					leftPosition = "50%";
-				}
-				else {
-					translateX = "0";
-					leftPosition = "0";
-				}
+	// 		if (self.centerHorizontally) {
+	// 			if (canCenterHorizontally) {
+	// 				translateX = "-50%";
+	// 				leftPosition = "50%";
+	// 			}
+	// 			else {
+	// 				translateX = "0";
+	// 				leftPosition = "0";
+	// 			}
 
-				if (view.style.left != leftPosition) {
-					view.style.left = leftPosition + "";
-				}
+	// 			if (view.style.left != leftPosition) {
+	// 				view.style.left = leftPosition + "";
+	// 			}
 
-				if (canCenterHorizontally) {
-					transformValue += " translateX(" + translateX+ ")";
-				}
-			}
+	// 			if (canCenterHorizontally) {
+	// 				transformValue += " translateX(" + translateX+ ")";
+	// 			}
+	// 		}
 
-			if (self.centerVertically) {
-				if (canCenterVertically) {
-					translateY = "-50%";
-					topPosition = "50%";
-				}
-				else {
-					translateY = "0";
-					topPosition = "0";
-				}
+	// 		if (self.centerVertically) {
+	// 			if (canCenterVertically) {
+	// 				translateY = "-50%";
+	// 				topPosition = "50%";
+	// 			}
+	// 			else {
+	// 				translateY = "0";
+	// 				topPosition = "0";
+	// 			}
 				
-				if (view.style.top != topPosition) {
-					view.style.top = topPosition + "";
-				}
+	// 			if (view.style.top != topPosition) {
+	// 				view.style.top = topPosition + "";
+	// 			}
 
-				if (canCenterVertically) {
-					transformValue += " translateY(" + translateY+ ")";
-				}
-			}
+	// 			if (canCenterVertically) {
+	// 				transformValue += " translateY(" + translateY+ ")";
+	// 			}
+	// 		}
 
-			view.style.transformOrigin = "0 0";
-			view.style.transform = transformValue;
+	// 		view.style.transformOrigin = "0 0";
+	// 		view.style.transform = transformValue;
 
-			self.viewScale = desiredScale;
-			self.viewToFitWidthScale = scaleNeededToFitWidth;
-			self.viewToFitHeightScale = scaleNeededToFitHeight;
-			self.viewLeft = leftPosition;
-			self.viewTop = topPosition;
+	// 		self.viewScale = desiredScale;
+	// 		self.viewToFitWidthScale = scaleNeededToFitWidth;
+	// 		self.viewToFitHeightScale = scaleNeededToFitHeight;
+	// 		self.viewLeft = leftPosition;
+	// 		self.viewTop = topPosition;
 
-			return scaleNeededToFitHeight;
-		}
+	// 		return scaleNeededToFitHeight;
+	// 	}
 
-		if (scaleToFitType=="fit") {
-			//canCenterVertically = scaleNeededToFitHeight>=scaleNeededToFitWidth;
-			//canCenterHorizontally = scaleNeededToFitWidth>=scaleNeededToFitHeight;
-			canCenterVertically = scaleNeededToFitHeight>=scaleNeededToFit;
-			canCenterHorizontally = scaleNeededToFitWidth>=scaleNeededToFit;
+	// 	if (scaleToFitType=="fit") {
+	// 		//canCenterVertically = scaleNeededToFitHeight>=scaleNeededToFitWidth;
+	// 		//canCenterHorizontally = scaleNeededToFitWidth>=scaleNeededToFitHeight;
+	// 		canCenterVertically = scaleNeededToFitHeight>=scaleNeededToFit;
+	// 		canCenterHorizontally = scaleNeededToFitWidth>=scaleNeededToFit;
 
-			if (hasMinimumScale) {
-				desiredScale = Math.max(desiredScale, Number(minimumScale));
-			}
+	// 		if (hasMinimumScale) {
+	// 			desiredScale = Math.max(desiredScale, Number(minimumScale));
+	// 		}
 
-			desiredScale = self.getShortNumber(desiredScale);
+	// 		desiredScale = self.getShortNumber(desiredScale);
 
-			if (isSliderChange || scaleToFit==false) {
-				canCenterVertically = scaleToFitFullHeight>=desiredScale;
-				canCenterHorizontally = desiredScale<scaleToFitFullWidth;
-			}
-			else if (scaleToFit) {
-				desiredScale = scaleNeededToFit;
-			}
+	// 		if (isSliderChange || scaleToFit==false) {
+	// 			canCenterVertically = scaleToFitFullHeight>=desiredScale;
+	// 			canCenterHorizontally = desiredScale<scaleToFitFullWidth;
+	// 		}
+	// 		else if (scaleToFit) {
+	// 			desiredScale = scaleNeededToFit;
+	// 		}
 
-			transformValue = "scale(" + desiredScale + ")";
+	// 		transformValue = "scale(" + desiredScale + ")";
 
-			//canCenterHorizontally = self.canCenterHorizontally(view, "fit", false, desiredScale);
-			//canCenterVertically = self.canCenterVertically(view, "fit", false, desiredScale);
+	// 		//canCenterHorizontally = self.canCenterHorizontally(view, "fit", false, desiredScale);
+	// 		//canCenterVertically = self.canCenterVertically(view, "fit", false, desiredScale);
 			
-			if (self.centerVertically) {
-				if (canCenterVertically) {
-					translateY = "-50%";
-					topPosition = "50%";
-				}
-				else {
-					translateY = "0";
-					topPosition = "0";
-				}
+	// 		if (self.centerVertically) {
+	// 			if (canCenterVertically) {
+	// 				translateY = "-50%";
+	// 				topPosition = "50%";
+	// 			}
+	// 			else {
+	// 				translateY = "0";
+	// 				topPosition = "0";
+	// 			}
 				
-				if (view.style.top != topPosition) {
-					view.style.top = topPosition + "";
-				}
+	// 			if (view.style.top != topPosition) {
+	// 				view.style.top = topPosition + "";
+	// 			}
 
-				if (canCenterVertically) {
-					transformValue += " translateY(" + translateY+ ")";
-				}
-			}
+	// 			if (canCenterVertically) {
+	// 				transformValue += " translateY(" + translateY+ ")";
+	// 			}
+	// 		}
 
-			if (self.centerHorizontally) {
-				if (canCenterHorizontally) {
-					translateX = "-50%";
-					leftPosition = "50%";
-				}
-				else {
-					translateX = "0";
-					leftPosition = "0";
-				}
+	// 		if (self.centerHorizontally) {
+	// 			if (canCenterHorizontally) {
+	// 				translateX = "-50%";
+	// 				leftPosition = "50%";
+	// 			}
+	// 			else {
+	// 				translateX = "0";
+	// 				leftPosition = "0";
+	// 			}
 
-				if (view.style.left != leftPosition) {
-					view.style.left = leftPosition + "";
-				}
+	// 			if (view.style.left != leftPosition) {
+	// 				view.style.left = leftPosition + "";
+	// 			}
 
-				if (canCenterHorizontally) {
-					transformValue += " translateX(" + translateX+ ")";
-				}
-			}
+	// 			if (canCenterHorizontally) {
+	// 				transformValue += " translateX(" + translateX+ ")";
+	// 			}
+	// 		}
 
-			view.style.transformOrigin = "0 0";
-			view.style.transform = transformValue;
+	// 		view.style.transformOrigin = "0 0";
+	// 		view.style.transform = transformValue;
 
-			self.viewScale = desiredScale;
-			self.viewToFitWidthScale = scaleNeededToFitWidth;
-			self.viewToFitHeightScale = scaleNeededToFitHeight;
-			self.viewLeft = leftPosition;
-			self.viewTop = topPosition;
+	// 		self.viewScale = desiredScale;
+	// 		self.viewToFitWidthScale = scaleNeededToFitWidth;
+	// 		self.viewToFitHeightScale = scaleNeededToFitHeight;
+	// 		self.viewLeft = leftPosition;
+	// 		self.viewTop = topPosition;
 
-			self.updateSliderValue(desiredScale);
+	// 		self.updateSliderValue(desiredScale);
 			
-			return desiredScale;
-		}
+	// 		return desiredScale;
+	// 	}
 
-		if (scaleToFitType=="default" || scaleToFitType=="") {
-			desiredScale = 1;
+	// 	if (scaleToFitType=="default" || scaleToFitType=="") {
+	// 		desiredScale = 1;
 
-			if (hasMinimumScale) {
-				desiredScale = Math.max(desiredScale, Number(minimumScale));
-			}
-			if (hasMaximumScale) {
-				desiredScale = Math.min(desiredScale, Number(maximumScale));
-			}
+	// 		if (hasMinimumScale) {
+	// 			desiredScale = Math.max(desiredScale, Number(minimumScale));
+	// 		}
+	// 		if (hasMaximumScale) {
+	// 			desiredScale = Math.min(desiredScale, Number(maximumScale));
+	// 		}
 
-			canCenterHorizontally = self.canCenterHorizontally(view, "none", false, desiredScale, minimumScale, maximumScale);
-			canCenterVertically = self.canCenterVertically(view, "none", false, desiredScale, minimumScale, maximumScale);
+	// 		canCenterHorizontally = self.canCenterHorizontally(view, "none", false, desiredScale, minimumScale, maximumScale);
+	// 		canCenterVertically = self.canCenterVertically(view, "none", false, desiredScale, minimumScale, maximumScale);
 
-			if (self.centerVertically) {
-				if (canCenterVertically) {
-					translateY = "-50%";
-					topPosition = "50%";
-				}
-				else {
-					translateY = "0";
-					topPosition = "0";
-				}
+	// 		if (self.centerVertically) {
+	// 			if (canCenterVertically) {
+	// 				translateY = "-50%";
+	// 				topPosition = "50%";
+	// 			}
+	// 			else {
+	// 				translateY = "0";
+	// 				topPosition = "0";
+	// 			}
 				
-				if (view.style.top != topPosition) {
-					view.style.top = topPosition + "";
-				}
+	// 			if (view.style.top != topPosition) {
+	// 				view.style.top = topPosition + "";
+	// 			}
 
-				if (canCenterVertically) {
-					transformValue += " translateY(" + translateY+ ")";
-				}
-			}
+	// 			if (canCenterVertically) {
+	// 				transformValue += " translateY(" + translateY+ ")";
+	// 			}
+	// 		}
 
-			if (self.centerHorizontally) {
-				if (canCenterHorizontally) {
-					translateX = "-50%";
-					leftPosition = "50%";
-				}
-				else {
-					translateX = "0";
-					leftPosition = "0";
-				}
+	// 		if (self.centerHorizontally) {
+	// 			if (canCenterHorizontally) {
+	// 				translateX = "-50%";
+	// 				leftPosition = "50%";
+	// 			}
+	// 			else {
+	// 				translateX = "0";
+	// 				leftPosition = "0";
+	// 			}
 
-				if (view.style.left != leftPosition) {
-					view.style.left = leftPosition + "";
-				}
+	// 			if (view.style.left != leftPosition) {
+	// 				view.style.left = leftPosition + "";
+	// 			}
 
-				if (canCenterHorizontally) {
-					transformValue += " translateX(" + translateX+ ")";
-				}
-				else {
-					transformValue += " translateX(" + 0 + ")";
-				}
-			}
+	// 			if (canCenterHorizontally) {
+	// 				transformValue += " translateX(" + translateX+ ")";
+	// 			}
+	// 			else {
+	// 				transformValue += " translateX(" + 0 + ")";
+	// 			}
+	// 		}
 
-			view.style.transformOrigin = "0 0";
-			view.style.transform = transformValue;
+	// 		view.style.transformOrigin = "0 0";
+	// 		view.style.transform = transformValue;
 
 
-			self.viewScale = desiredScale;
-			self.viewToFitWidthScale = scaleNeededToFitWidth;
-			self.viewToFitHeightScale = scaleNeededToFitHeight;
-			self.viewLeft = leftPosition;
-			self.viewTop = topPosition;
+	// 		self.viewScale = desiredScale;
+	// 		self.viewToFitWidthScale = scaleNeededToFitWidth;
+	// 		self.viewToFitHeightScale = scaleNeededToFitHeight;
+	// 		self.viewLeft = leftPosition;
+	// 		self.viewTop = topPosition;
 
-			self.updateSliderValue(desiredScale);
+	// 		self.updateSliderValue(desiredScale);
 			
-			return desiredScale;
-		}
-	}
+	// 		return desiredScale;
+	// 	}
+	// }
 
-	/**
-	 * Returns true if view can be centered horizontally
-	 * @param {HTMLElement} view view
-	 * @param {String} type type of scaling - width, height, all, none
-	 * @param {Boolean} scaleUp if scale up enabled 
-	 * @param {Number} scale target scale value 
-	 */
-	self.canCenterHorizontally = function(view, type, scaleUp, scale, minimumScale, maximumScale) {
-		var scaleNeededToFit = self.getViewFitToViewportScale(view, scaleUp);
-		var scaleNeededToFitHeight = self.getViewFitToViewportHeightScale(view, scaleUp);
-		var scaleNeededToFitWidth = self.getViewFitToViewportWidthScale(view, scaleUp);
-		var canCenter = false;
-		var minScale;
+	// /**
+	//  * Returns true if view can be centered horizontally
+	//  * @param {HTMLElement} view view
+	//  * @param {String} type type of scaling - width, height, all, none
+	//  * @param {Boolean} scaleUp if scale up enabled 
+	//  * @param {Number} scale target scale value 
+	//  */
+	// self.canCenterHorizontally = function(view, type, scaleUp, scale, minimumScale, maximumScale) {
+	// 	var scaleNeededToFit = self.getViewFitToViewportScale(view, scaleUp);
+	// 	var scaleNeededToFitHeight = self.getViewFitToViewportHeightScale(view, scaleUp);
+	// 	var scaleNeededToFitWidth = self.getViewFitToViewportWidthScale(view, scaleUp);
+	// 	var canCenter = false;
+	// 	var minScale;
 
-		type = type==null ? "none" : type;
-		scale = scale==null ? scale : scaleNeededToFitWidth;
-		scaleUp = scaleUp == null ? false : scaleUp;
+	// 	type = type==null ? "none" : type;
+	// 	scale = scale==null ? scale : scaleNeededToFitWidth;
+	// 	scaleUp = scaleUp == null ? false : scaleUp;
 
-		if (type=="width") {
+	// 	if (type=="width") {
 	
-			if (scaleUp && maximumScale==null) {
-				canCenter = false;
-			}
-			else if (scaleNeededToFitWidth>=1) {
-				canCenter = true;
-			}
-		}
-		else if (type=="height") {
-			minScale = Math.min(1, scaleNeededToFitHeight);
-			if (minimumScale!="" && maximumScale!="") {
-				minScale = Math.max(minimumScale, Math.min(maximumScale, scaleNeededToFitHeight));
-			}
-			else {
-				if (minimumScale!="") {
-					minScale = Math.max(minimumScale, scaleNeededToFitHeight);
-				}
-				if (maximumScale!="") {
-					minScale = Math.max(minimumScale, Math.min(maximumScale, scaleNeededToFitHeight));
-				}
-			}
+	// 		if (scaleUp && maximumScale==null) {
+	// 			canCenter = false;
+	// 		}
+	// 		else if (scaleNeededToFitWidth>=1) {
+	// 			canCenter = true;
+	// 		}
+	// 	}
+	// 	else if (type=="height") {
+	// 		minScale = Math.min(1, scaleNeededToFitHeight);
+	// 		if (minimumScale!="" && maximumScale!="") {
+	// 			minScale = Math.max(minimumScale, Math.min(maximumScale, scaleNeededToFitHeight));
+	// 		}
+	// 		else {
+	// 			if (minimumScale!="") {
+	// 				minScale = Math.max(minimumScale, scaleNeededToFitHeight);
+	// 			}
+	// 			if (maximumScale!="") {
+	// 				minScale = Math.max(minimumScale, Math.min(maximumScale, scaleNeededToFitHeight));
+	// 			}
+	// 		}
 	
-			if (scaleUp && maximumScale=="") {
-				canCenter = false;
-			}
-			else if (scaleNeededToFitWidth>=minScale) {
-				canCenter = true;
-			}
-		}
-		else if (type=="fit") {
-			canCenter = scaleNeededToFitWidth>=scaleNeededToFit;
-		}
-		else {
-			if (scaleUp) {
-				canCenter = false;
-			}
-			else if (scaleNeededToFitWidth>=1) {
-				canCenter = true;
-			}
-		}
+	// 		if (scaleUp && maximumScale=="") {
+	// 			canCenter = false;
+	// 		}
+	// 		else if (scaleNeededToFitWidth>=minScale) {
+	// 			canCenter = true;
+	// 		}
+	// 	}
+	// 	else if (type=="fit") {
+	// 		canCenter = scaleNeededToFitWidth>=scaleNeededToFit;
+	// 	}
+	// 	else {
+	// 		if (scaleUp) {
+	// 			canCenter = false;
+	// 		}
+	// 		else if (scaleNeededToFitWidth>=1) {
+	// 			canCenter = true;
+	// 		}
+	// 	}
 
-		self.horizontalScrollbarsNeeded = canCenter;
+	// 	self.horizontalScrollbarsNeeded = canCenter;
 		
-		return canCenter;
-	}
+	// 	return canCenter;
+	// }
 
 	/**
 	 * Returns true if view can be centered horizontally
@@ -1939,79 +1939,79 @@ var Application = function() {
 		return canCenter;
 	}
 
-	self.getViewFitToViewportScale = function(view, scaleUp) {
-		var enableScaleUp = scaleUp;
-		var availableWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-		var availableHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-		var elementWidth = parseFloat(getComputedStyle(view, "style").width);
-		var elementHeight = parseFloat(getComputedStyle(view, "style").height);
-		var newScale = 1;
+	// self.getViewFitToViewportScale = function(view, scaleUp) {
+	// 	var enableScaleUp = scaleUp;
+	// 	var availableWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+	// 	var availableHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+	// 	var elementWidth = parseFloat(getComputedStyle(view, "style").width);
+	// 	var elementHeight = parseFloat(getComputedStyle(view, "style").height);
+	// 	var newScale = 1;
 
-		// if element is not added to the document computed values are NaN
-		if (isNaN(elementWidth) || isNaN(elementHeight)) {
-			return newScale;
-		}
+	// 	// if element is not added to the document computed values are NaN
+	// 	if (isNaN(elementWidth) || isNaN(elementHeight)) {
+	// 		return newScale;
+	// 	}
 
-		availableWidth -= self.horizontalPadding;
-		availableHeight -= self.verticalPadding;
+	// 	availableWidth -= self.horizontalPadding;
+	// 	availableHeight -= self.verticalPadding;
 
-		if (enableScaleUp) {
-			newScale = Math.min(availableHeight/elementHeight, availableWidth/elementWidth);
-		}
-		else if (elementWidth > availableWidth || elementHeight > availableHeight) {
-			newScale = Math.min(availableHeight/elementHeight, availableWidth/elementWidth);
-		}
+	// 	if (enableScaleUp) {
+	// 		newScale = Math.min(availableHeight/elementHeight, availableWidth/elementWidth);
+	// 	}
+	// 	else if (elementWidth > availableWidth || elementHeight > availableHeight) {
+	// 		newScale = Math.min(availableHeight/elementHeight, availableWidth/elementWidth);
+	// 	}
 		
-		return newScale;
-	}
+	// 	return newScale;
+	// }
 
-	self.getViewFitToViewportWidthScale = function(view, scaleUp) {
-		// need to get browser viewport width when element
-		var isParentWindow = view && view.parentNode && view.parentNode===document.body;
-		var enableScaleUp = scaleUp;
-		var availableWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-		var elementWidth = parseFloat(getComputedStyle(view, "style").width);
-		var newScale = 1;
+	// self.getViewFitToViewportWidthScale = function(view, scaleUp) {
+	// 	// need to get browser viewport width when element
+	// 	var isParentWindow = view && view.parentNode && view.parentNode===document.body;
+	// 	var enableScaleUp = scaleUp;
+	// 	var availableWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+	// 	var elementWidth = parseFloat(getComputedStyle(view, "style").width);
+	// 	var newScale = 1;
 
-		// if element is not added to the document computed values are NaN
-		if (isNaN(elementWidth)) {
-			return newScale;
-		}
+	// 	// if element is not added to the document computed values are NaN
+	// 	if (isNaN(elementWidth)) {
+	// 		return newScale;
+	// 	}
 
-		availableWidth -= self.horizontalPadding;
+	// 	availableWidth -= self.horizontalPadding;
 
-		if (enableScaleUp) {
-			newScale = availableWidth/elementWidth;
-		}
-		else if (elementWidth > availableWidth) {
-			newScale = availableWidth/elementWidth;
-		}
+	// 	if (enableScaleUp) {
+	// 		newScale = availableWidth/elementWidth;
+	// 	}
+	// 	else if (elementWidth > availableWidth) {
+	// 		newScale = availableWidth/elementWidth;
+	// 	}
 		
-		return newScale;
-	}
+	// 	return newScale;
+	// }
 
-	self.getViewFitToViewportHeightScale = function(view, scaleUp) {
-		var enableScaleUp = scaleUp;
-		var availableHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-		var elementHeight = parseFloat(getComputedStyle(view, "style").height);
-		var newScale = 1;
+	// self.getViewFitToViewportHeightScale = function(view, scaleUp) {
+	// 	var enableScaleUp = scaleUp;
+	// 	var availableHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+	// 	var elementHeight = parseFloat(getComputedStyle(view, "style").height);
+	// 	var newScale = 1;
 
-		// if element is not added to the document computed values are NaN
-		if (isNaN(elementHeight)) {
-			return newScale;
-		}
+	// 	// if element is not added to the document computed values are NaN
+	// 	if (isNaN(elementHeight)) {
+	// 		return newScale;
+	// 	}
 
-		availableHeight -= self.verticalPadding;
+	// 	availableHeight -= self.verticalPadding;
 
-		if (enableScaleUp) {
-			newScale = availableHeight/elementHeight;
-		}
-		else if (elementHeight > availableHeight) {
-			newScale = availableHeight/elementHeight;
-		}
+	// 	if (enableScaleUp) {
+	// 		newScale = availableHeight/elementHeight;
+	// 	}
+	// 	else if (elementHeight > availableHeight) {
+	// 		newScale = availableHeight/elementHeight;
+	// 	}
 		
-		return newScale;
-	}
+	// 	return newScale;
+	// }
 
 	self.keypressHandler = function(event) {
 		var rightKey = 39;
