@@ -2575,40 +2575,40 @@ var Application = function() {
 		return element;
 	}
 
-	self.resizeHandler = function(event) {
-		var view = self.getVisibleView();
+	// self.resizeHandler = function(event) {
+	// 	var view = self.getVisibleView();
 
-		if (self.showByMediaQuery && view) {
-			self.setViewOptions(view);
-			self.setViewVariables(view);
-		}
-		else {
-			self.scaleViewIfNeeded();
-		}
+	// 	if (self.showByMediaQuery && view) {
+	// 		self.setViewOptions(view);
+	// 		self.setViewVariables(view);
+	// 	}
+	// 	else {
+	// 		self.scaleViewIfNeeded();
+	// 	}
 
-		window.dispatchEvent(new Event(self.APPLICATION_RESIZE));
-	}
+	// 	window.dispatchEvent(new Event(self.APPLICATION_RESIZE));
+	// }
 
-	self.scaleViewIfNeeded = function(view) {
+	// self.scaleViewIfNeeded = function(view) {
 
-		if (self.scaleViewsOnResize) {
-			if (view==null) {
-				view = self.getVisibleView();
-			}
+	// 	if (self.scaleViewsOnResize) {
+	// 		if (view==null) {
+	// 			view = self.getVisibleView();
+	// 		}
 
-			var isViewScaled = view.getAttributeNS(null, self.SIZE_STATE_NAME)=="false" ? false : true;
+	// 		var isViewScaled = view.getAttributeNS(null, self.SIZE_STATE_NAME)=="false" ? false : true;
 
-			if (isViewScaled) {
-				self.scaleViewToFit(view, true);
-			}
-			else {
-				self.scaleViewToActualSize(view);
-			}
-		}
-		else if (view) {
-			self.centerView(view);
-		}
-	}
+	// 		if (isViewScaled) {
+	// 			self.scaleViewToFit(view, true);
+	// 		}
+	// 		else {
+	// 			self.scaleViewToActualSize(view);
+	// 		}
+	// 	}
+	// 	else if (view) {
+	// 		self.centerView(view);
+	// 	}
+	// }
 
 	self.centerView = function(view) {
 
@@ -2668,57 +2668,57 @@ var Application = function() {
 		// - set scale to actual size on double click
 		// - switch between scale to fit and actual page size
 
-		if (scaleToFitType=="width") {
-			scaleNeededToFit = scaleNeededToFitWidth;
-		}
-		else if (scaleToFitType=="height") {
-			scaleNeededToFit = scaleNeededToFitHeight;
-		}
+		// if (scaleToFitType=="width") {
+		// 	scaleNeededToFit = scaleNeededToFitWidth;
+		// }
+		// else if (scaleToFitType=="height") {
+		// 	scaleNeededToFit = scaleNeededToFitHeight;
+		// }
 
 		// if scale and actual size enabled then switch between
-		if (self.scaleToFitOnDoubleClick && self.actualSizeOnDoubleClick) {
-			var isViewScaled = view.getAttributeNS(null, self.SIZE_STATE_NAME);
-			var isScaled = false;
+		// if (self.scaleToFitOnDoubleClick && self.actualSizeOnDoubleClick) {
+		// 	var isViewScaled = view.getAttributeNS(null, self.SIZE_STATE_NAME);
+		// 	var isScaled = false;
 			
-			// if scale is not 1 then view needs scaling
-			if (scaleNeededToFit!=1) {
+		// 	// if scale is not 1 then view needs scaling
+		// 	if (scaleNeededToFit!=1) {
 
-				// if current scale is at 1 it is at actual size
-				// scale it to fit
-				if (scaleValue==1) {
-					self.scaleViewToFit(view);
-					isScaled = true;
-				}
-				else {
-					// scale is not at 1 so switch to actual size
-					self.scaleViewToActualSize(view);
-					isScaled = false;
-				}
-			}
-			else {
-				// view is smaller than viewport 
-				// so scale to fit() is scale actual size
-				// actual size and scaled size are the same
-				// but call scale to fit to retain centering
-				self.scaleViewToFit(view);
-				isScaled = false;
-			}
+		// 		// if current scale is at 1 it is at actual size
+		// 		// scale it to fit
+		// 		if (scaleValue==1) {
+		// 			self.scaleViewToFit(view);
+		// 			isScaled = true;
+		// 		}
+		// 		else {
+		// 			// scale is not at 1 so switch to actual size
+		// 			self.scaleViewToActualSize(view);
+		// 			isScaled = false;
+		// 		}
+		// 	}
+		// 	else {
+		// 		// view is smaller than viewport 
+		// 		// so scale to fit() is scale actual size
+		// 		// actual size and scaled size are the same
+		// 		// but call scale to fit to retain centering
+		// 		self.scaleViewToFit(view);
+		// 		isScaled = false;
+		// 	}
 			
-			view.setAttributeNS(null, self.SIZE_STATE_NAME, isScaled+"");
-			isViewScaled = view.getAttributeNS(null, self.SIZE_STATE_NAME);
-		}
-		else if (self.scaleToFitOnDoubleClick) {
-			self.scaleViewToFit(view);
-		}
-		else if (self.actualSizeOnDoubleClick) {
-			self.scaleViewToActualSize(view);
-		}
+		// 	view.setAttributeNS(null, self.SIZE_STATE_NAME, isScaled+"");
+		// 	isViewScaled = view.getAttributeNS(null, self.SIZE_STATE_NAME);
+		// }
+		// else if (self.scaleToFitOnDoubleClick) {
+		// 	self.scaleViewToFit(view);
+		// }
+		// else if (self.actualSizeOnDoubleClick) {
+		// 	self.scaleViewToActualSize(view);
+		// }
 
 	}
 
-	self.scaleViewToFit = function(view) {
-		return self.setViewScaleValue(view, true);
-	}
+	// self.scaleViewToFit = function(view) {
+	// 	return self.setViewScaleValue(view, true);
+	// }
 
 	self.scaleViewToActualSize = function(view) {
 		self.setViewScaleValue(view, false, 1);
