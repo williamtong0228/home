@@ -374,8 +374,8 @@ var Application = function() {
 	this.VIEW_CHANGE = "viewChange";
 	this.STATE_NOT_FOUND = "stateNotFound";
 	this.APPLICATION_COMPLETE = "applicationComplete";
-	this.APPLICATION_RESIZE = "applicationResize";
-	this.SIZE_STATE_NAME = "data-is-view-scaled";
+	// this.APPLICATION_RESIZE = "applicationResize";
+	// this.SIZE_STATE_NAME = "data-is-view-scaled";
 
 	this.lastView = null;
 	this.lastState = null;
@@ -387,7 +387,7 @@ var Application = function() {
 	this.inclusionQuery = "(min-width: 0px)";
 	this.exclusionQuery = "none and (min-width: 99999px)";
 	this.LastModifiedDateLabelName = "LastModifiedDateLabel";
-	this.viewScaleSliderId = "ViewScaleSliderInput";
+	// this.viewScaleSliderId = "ViewScaleSliderInput";
 	this.pageRefreshedName = "showPageRefreshedNotification";
 	this.prefix = "--web-";
 	this.applicationStylesheet = null;
@@ -404,7 +404,7 @@ var Application = function() {
 	this.verticalPadding = 0;
 	this.horizontalPadding = 0;
 	this.stateName = null;
-	this.viewScale = 1;
+	this.viewScale = 0;
 	this.viewLeft = 0;
 	this.viewTop = 0;
 
@@ -479,25 +479,25 @@ var Application = function() {
 			self.initialized = true;
 		}
 		
-		if (self.scaleViewsToFit) {
-			self.viewScale = self.scaleViewToFit(view);
+		// if (self.scaleViewsToFit) {
+		// 	self.viewScale = self.scaleViewToFit(view);
 			
-			if (self.viewScale<0) {
-				setTimeout(self.scaleViewToFit, 500, view);
-			}
-		}
-		else if (view) {
-			self.viewScale = self.getViewScaleValue(view);
-			self.centerView(view);
-			self.updateSliderValue(self.viewScale);
-		}
-		else {
-			// no view found
-		}
+		// 	if (self.viewScale<0) {
+		// 		setTimeout(self.scaleViewToFit, 500, view);
+		// 	}
+		// }
+		// else if (view) {
+		// 	self.viewScale = self.getViewScaleValue(view);
+		// 	self.centerView(view);
+		// 	self.updateSliderValue(self.viewScale);
+		// }
+		// else {
+		// 	// no view found
+		// }
 	
-		if (self.showUpdateNotification) {
-			self.showNotification();
-		}
+		// if (self.showUpdateNotification) {
+		// 	self.showNotification();
+		// }
 	
 		//"addEventListener" in window ? null : window.addEventListener = window.attachEvent;
 		//"addEventListener" in document ? null : document.addEventListener = document.attachEvent;
@@ -1401,66 +1401,66 @@ var Application = function() {
 	// VIEW SCALE 
 	/////////////////////////////////////////
 
-	self.sliderChangeHandler = function(event) {
-		var value = self.getShortNumber(event.currentTarget.value/100);
-		var view = self.getVisibleView();
-		self.setViewScaleValue(view, false, value, true);
-	}
+	// self.sliderChangeHandler = function(event) {
+	// 	var value = self.getShortNumber(event.currentTarget.value/100);
+	// 	var view = self.getVisibleView();
+	// 	self.setViewScaleValue(view, false, value, true);
+	// }
 
-	self.updateSliderValue = function(scale) {
-		var slider = document.getElementById(self.viewScaleSliderId);
-		var tooltip = parseInt(scale * 100 + "") + "%";
-		var inputType;
-		var inputValue;
+	// self.updateSliderValue = function(scale) {
+	// 	var slider = document.getElementById(self.viewScaleSliderId);
+	// 	var tooltip = parseInt(scale * 100 + "") + "%";
+	// 	var inputType;
+	// 	var inputValue;
 		
-		if (slider) {
-			inputValue = self.getShortNumber(scale * 100);
-			if (inputValue!=slider["value"]) {
-				slider["value"] = inputValue;
-			}
-			inputType = slider.getAttributeNS(null, "type");
+	// 	if (slider) {
+	// 		inputValue = self.getShortNumber(scale * 100);
+	// 		if (inputValue!=slider["value"]) {
+	// 			slider["value"] = inputValue;
+	// 		}
+	// 		inputType = slider.getAttributeNS(null, "type");
 
-			if (inputType!="range") {
-				// input range is not supported
-				slider.style.display = "none";
-			}
+	// 		if (inputType!="range") {
+	// 			// input range is not supported
+	// 			slider.style.display = "none";
+	// 		}
 
-			self.setTooltip(slider, tooltip);
-		}
-	}
+	// 		self.setTooltip(slider, tooltip);
+	// 	}
+	// }
 
-	self.viewChangeHandler = function(event) {
-		var view = self.getVisibleView();
-		var matrix = view ? getComputedStyle(view).transform : null;
+	// self.viewChangeHandler = function(event) {
+	// 	var view = self.getVisibleView();
+	// 	var matrix = view ? getComputedStyle(view).transform : null;
 		
-		if (matrix) {
-			self.viewScale = self.getViewScaleValue(view);
+	// 	if (matrix) {
+	// 		self.viewScale = self.getViewScaleValue(view);
 			
-			var scaleNeededToFit = self.getViewFitToViewportScale(view);
-			var isViewLargerThanViewport = scaleNeededToFit<1;
+	// 		var scaleNeededToFit = self.getViewFitToViewportScale(view);
+	// 		var isViewLargerThanViewport = scaleNeededToFit<1;
 			
-			// scale large view to fit if scale to fit is enabled
-			if (self.scaleViewsToFit) {
-				self.scaleViewToFit(view);
-			}
-			else {
-				self.updateSliderValue(self.viewScale);
-			}
-		}
-	}
+	// 		// scale large view to fit if scale to fit is enabled
+	// 		if (self.scaleViewsToFit) {
+	// 			self.scaleViewToFit(view);
+	// 		}
+	// 		else {
+	// 			self.updateSliderValue(self.viewScale);
+	// 		}
+	// 	}
+	// }
 
-	self.getViewScaleValue = function(view) {
-		var matrix = getComputedStyle(view).transform;
+	// self.getViewScaleValue = function(view) {
+	// 	var matrix = getComputedStyle(view).transform;
 
-		if (matrix) {
-			var matrixArray = matrix.replace("matrix(", "").split(",");
-			var scaleX = parseFloat(matrixArray[0]);
-			var scaleY = parseFloat(matrixArray[3]);
-			var scale = Math.min(scaleX, scaleY);
-		}
+	// 	if (matrix) {
+	// 		var matrixArray = matrix.replace("matrix(", "").split(",");
+	// 		var scaleX = parseFloat(matrixArray[0]);
+	// 		var scaleY = parseFloat(matrixArray[3]);
+	// 		var scale = Math.min(scaleX, scaleY);
+	// 	}
 
-		return scale;
-	}
+	// 	return scale;
+	// }
 
 	/**
 	 * Scales view to scale. 
@@ -1904,40 +1904,40 @@ var Application = function() {
 	 * @param {Boolean} scaleUp if scale up enabled 
 	 * @param {Number} scale target scale value 
 	 */
-	self.canCenterVertically = function(view, type, scaleUp, scale, minimumScale, maximumScale) {
-		var scaleNeededToFit = self.getViewFitToViewportScale(view, scaleUp);
-		var scaleNeededToFitWidth = self.getViewFitToViewportWidthScale(view, scaleUp);
-		var scaleNeededToFitHeight = self.getViewFitToViewportHeightScale(view, scaleUp);
-		var canCenter = false;
-		var minScale;
+	// self.canCenterVertically = function(view, type, scaleUp, scale, minimumScale, maximumScale) {
+	// 	var scaleNeededToFit = self.getViewFitToViewportScale(view, scaleUp);
+	// 	var scaleNeededToFitWidth = self.getViewFitToViewportWidthScale(view, scaleUp);
+	// 	var scaleNeededToFitHeight = self.getViewFitToViewportHeightScale(view, scaleUp);
+	// 	var canCenter = false;
+	// 	var minScale;
 
-		type = type==null ? "none" : type;
-		scale = scale==null ? 1 : scale;
-		scaleUp = scaleUp == null ? false : scaleUp;
+	// 	type = type==null ? "none" : type;
+	// 	scale = scale==null ? 1 : scale;
+	// 	scaleUp = scaleUp == null ? false : scaleUp;
 	
-		if (type=="width") {
-			canCenter = scaleNeededToFitHeight>=scaleNeededToFitWidth;
-		}
-		else if (type=="height") {
-			minScale = Math.max(minimumScale, Math.min(maximumScale, scaleNeededToFit));
-			canCenter = scaleNeededToFitHeight>=minScale;
-		}
-		else if (type=="fit") {
-			canCenter = scaleNeededToFitHeight>=scaleNeededToFit;
-		}
-		else {
-			if (scaleUp) {
-				canCenter = false;
-			}
-			else if (scaleNeededToFitHeight>=1) {
-				canCenter = true;
-			}
-		}
+	// 	if (type=="width") {
+	// 		canCenter = scaleNeededToFitHeight>=scaleNeededToFitWidth;
+	// 	}
+	// 	else if (type=="height") {
+	// 		minScale = Math.max(minimumScale, Math.min(maximumScale, scaleNeededToFit));
+	// 		canCenter = scaleNeededToFitHeight>=minScale;
+	// 	}
+	// 	else if (type=="fit") {
+	// 		canCenter = scaleNeededToFitHeight>=scaleNeededToFit;
+	// 	}
+	// 	else {
+	// 		if (scaleUp) {
+	// 			canCenter = false;
+	// 		}
+	// 		else if (scaleNeededToFitHeight>=1) {
+	// 			canCenter = true;
+	// 		}
+	// 	}
 
-		self.verticalScrollbarsNeeded = canCenter;
+	// 	self.verticalScrollbarsNeeded = canCenter;
 		
-		return canCenter;
-	}
+	// 	return canCenter;
+	// }
 
 	// self.getViewFitToViewportScale = function(view, scaleUp) {
 	// 	var enableScaleUp = scaleUp;
@@ -2432,7 +2432,7 @@ var Application = function() {
 				self.setViewVariables(self.currentView);
 				self.hideViews();
 				self.enableMediaQuery(state.rule);
-				self.scaleViewIfNeeded(targetView);
+				// self.scaleViewIfNeeded(targetView);
 				self.centerView(targetView);
 				self.updateViewLabel();
 				self.updateURL();
@@ -2610,15 +2610,15 @@ var Application = function() {
 	// 	}
 	// }
 
-	self.centerView = function(view) {
+	// self.centerView = function(view) {
 
-		if (self.scaleToFit) {
-			self.scaleViewToFit(view, true);
-		}
-		else {
-			self.scaleViewToActualSize(view);  // for centering support for now
-		}
-	}
+	// 	if (self.scaleToFit) {
+	// 		self.scaleViewToFit(view, true);
+	// 	}
+	// 	else {
+	// 		self.scaleViewToActualSize(view);  // for centering support for now
+	// 	}
+	// }
 
 	self.preventDoubleClick = function(event) {
 		event.stopImmediatePropagation();
@@ -2655,13 +2655,13 @@ var Application = function() {
 		}
 	}
 
-	self.doubleClickHandler = function(event) {
-		var view = self.getVisibleView();
-		var scaleValue = view ? self.getViewScaleValue(view) : 1;
-		var scaleNeededToFit = view ? self.getViewFitToViewportScale(view) : 1;
-		var scaleNeededToFitWidth = view ? self.getViewFitToViewportWidthScale(view) : 1;
-		var scaleNeededToFitHeight = view ? self.getViewFitToViewportHeightScale(view) : 1;
-		var scaleToFitType = self.scaleToFitType;
+	// self.doubleClickHandler = function(event) {
+		// var view = self.getVisibleView();
+		// var scaleValue = view ? self.getViewScaleValue(view) : 1;
+		// var scaleNeededToFit = view ? self.getViewFitToViewportScale(view) : 1;
+		// var scaleNeededToFitWidth = view ? self.getViewFitToViewportWidthScale(view) : 1;
+		// var scaleNeededToFitHeight = view ? self.getViewFitToViewportHeightScale(view) : 1;
+		// var scaleToFitType = self.scaleToFitType;
 
 		// Three scenarios
 		// - scale to fit on double click
@@ -2714,15 +2714,15 @@ var Application = function() {
 		// 	self.scaleViewToActualSize(view);
 		// }
 
-	}
+	// }
 
 	// self.scaleViewToFit = function(view) {
 	// 	return self.setViewScaleValue(view, true);
 	// }
 
-	self.scaleViewToActualSize = function(view) {
-		self.setViewScaleValue(view, false, 1);
-	}
+	// self.scaleViewToActualSize = function(view) {
+	// 	self.setViewScaleValue(view, false, 1);
+	// }
 
 	self.onloadHandler = function(event) {
 		self.initialize();
